@@ -8,8 +8,7 @@ import {
   renderThumbDark,
   renderThumbLight,
   renderTrack,
-  renderView,
-} from "../Scrollbar/Scrollbar";
+} from "../scrollbar/Scrollbar";
 
 interface SidebarResponsiveProps {
   routes: IRouteSidebarGroup[];
