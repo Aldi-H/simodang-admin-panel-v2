@@ -2,18 +2,12 @@ import { Icon } from "@chakra-ui/react";
 
 import { IRouteSidebarGroup } from "./types/navigation";
 
-import {
-  FaRegChartBar,
-  FaRocket,
-  FaUsers,
-  FaUser,
-  FaTerminal,
-} from "react-icons/fa";
+import { FaRegChartBar, FaRocket, FaUsers, FaUser } from "react-icons/fa";
 import { BsFillMotherboardFill } from "react-icons/bs";
 import { GrArticle } from "react-icons/gr";
 import { IoMdSettings } from "react-icons/io";
-import { FiLogOut } from "react-icons/fi";
 import { MdError } from "react-icons/md";
+// import { FiLogOut } from "react-icons/fi";
 
 const SidebarRoutes: IRouteSidebarGroup[] = [
   {
@@ -85,12 +79,12 @@ const SidebarRoutes: IRouteSidebarGroup[] = [
           <Icon as={IoMdSettings} width="16px" height="16px" color="inherit" />
         ),
       },
-      {
-        name: "Logout",
-        layout: "/admin",
-        path: "#",
-        icon: <Icon as={FiLogOut} width="16px" height="16px" color="inherit" />,
-      },
+      //   {
+      //     name: "Logout",
+      //     layout: "/admin",
+      //     path: "#",
+      //     icon: <Icon as={FiLogOut} width="16px" height="16px" color="inherit" />,
+      //   },
     ],
   },
 ];
