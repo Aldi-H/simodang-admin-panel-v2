@@ -10,8 +10,12 @@ import {
 import { PropsWithChildren } from "react";
 
 import Sidebar from "@/components/sidebar/Sidebar";
-import SidebarBrand from "@/components/sidebar/components/Brand";
 import SidebarRoutes from "@/routes";
+import Navbar from "@/components/navbars/Navbar";
+import { useRouter } from "next/router";
+// import { getActiveRoute } from "@/utils/navigation";
+import { usePathname } from "next/navigation";
+import { GetActiveRoute } from "@/utils/navigation";
 
 interface DashboardLayoutProps extends PropsWithChildren {
   [x: string]: any;
@@ -19,6 +23,9 @@ interface DashboardLayoutProps extends PropsWithChildren {
 
 const AdminLayout = (props: DashboardLayoutProps) => {
   const { children, ...rest } = props;
+
+  // const router = useRouter();
+  const currentPageRoute = usePathname();
 
   const { colorMode } = useColorMode();
 
@@ -35,6 +42,7 @@ const AdminLayout = (props: DashboardLayoutProps) => {
       top="0"
     >
       <Sidebar routes={SidebarRoutes} />
+
       <Box
         float="right"
         minH="100vh"
@@ -49,10 +57,12 @@ const AdminLayout = (props: DashboardLayoutProps) => {
         // transitionProperty="top, bottom, width"
         // transitionTimingFunction="linear, linear, ease"
       >
-        {/* <Portal>
+        <Portal>
           <Box>
+            <Navbar currentPageRoute={GetActiveRoute(SidebarRoutes)} />
+            {/* <Navbar currentPageRoute={getActiveRoute(SidebarRoutes)} /> */}
           </Box>
-        </Portal> */}
+        </Portal>
 
         <Box
           mx="auto"
