@@ -24,11 +24,12 @@ const SidebarLinks = (props: SidebarLinkProps) => {
 
   const activeColor = useColorModeValue("gray.700", "white");
 
-  // const inactiveColor = useColorModeValue(
-  //   "secondaryGray.600",
-  //   "secondaryGray.600",
-  // );
-  // const activeIcon = useColorModeValue("brand.500", "white");
+  const inactiveColor = useColorModeValue(
+    "secondaryGray.600",
+    "secondaryGray.600",
+  );
+  // const activeIconBackground = useColorModeValue("navy.600", "navy.500");
+  // const activeIcon = useColorModeValue("white", "white");
   // const textColor = useColorModeValue("secondaryGray.500", "white");
   // const brandColor = useColorModeValue("brand.500", "brand.400");
 
@@ -104,7 +105,7 @@ const SidebarLinks = (props: SidebarLinkProps) => {
                           <Icon>{route.icon}</Icon>
                         ) : (
                           <IconBox
-                            bg="blue.500"
+                            bg="navy.500"
                             color="white"
                             h="28px"
                             w="28px"
@@ -157,7 +158,7 @@ const SidebarLinks = (props: SidebarLinkProps) => {
                         ) : (
                           <IconBox
                             bg={inactiveBg}
-                            color="blue.500"
+                            color={inactiveColor}
                             h="28px"
                             w="28px"
                             me="12px"
