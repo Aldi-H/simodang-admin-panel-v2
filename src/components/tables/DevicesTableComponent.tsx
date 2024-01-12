@@ -51,6 +51,8 @@ import { FaPlus } from "react-icons/fa6";
 
 import Card from "@/components/cards/Card";
 import Searchbar from "../searchBar/SearchBar";
+import TableHeader from "./components/TableHeader";
+import TableCell from "./components/TableCell";
 
 type DevicesTableColumnHelper = {
   deviceId: string;
@@ -83,105 +85,77 @@ const DevicesTableComponent = (props: { tableData: any }) => {
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
 
+  /**
+   * Defines the columns configuration for the DevicesTableComponent.
+   * Each column is defined using the columnHelper.accessor function,
+   * specifying the accessor key and providing a configuration object
+   * with properties for header and cell rendering.
+   * @type {Array}
+   */
+
   const columns: any[] = [
-    //* Column Helper/Column Template for deviceId
+    // Column Helper/Column Template for deviceId
     columnHelper.accessor("deviceId", {
       id: "deviceId",
       header: () => {
-        return (
-          <Text
-            justifyContent="space-between"
-            align="center"
-            fontSize={{ sm: "10px", lg: "12px" }}
-            color="gray.500"
-          >
-            Id Perangkat
-          </Text>
-        );
+        return <TableHeader tableHeaderName="Id Perangkat" />;
       },
       cell: (deviceIdData: any) => {
         return (
-          <Flex align="center">
+          <TableCell>
             <Text color={textColor} fontSize="sm" fontWeight="700">
               {deviceIdData.getValue()}
             </Text>
-          </Flex>
+          </TableCell>
         );
       },
     }),
 
-    //* Column Helper/Column Template for masterId
+    // Column Helper/Column Template for masterId
     columnHelper.accessor("masterId", {
       id: "masterId",
       header: () => {
-        return (
-          <Text
-            justifyContent="space-between"
-            align="center"
-            fontSize={{ sm: "10px", lg: "12px" }}
-            color="gray.500"
-          >
-            Id Master
-          </Text>
-        );
+        return <TableHeader tableHeaderName="Id Master" />;
       },
       cell: (masterIdData: any) => {
         return (
-          <Flex align="center">
+          <TableCell>
             <Text color={textColor} fontSize="sm" fontWeight="700">
               {masterIdData.getValue()}
             </Text>
-          </Flex>
+          </TableCell>
         );
       },
     }),
 
-    //* Column Helper/Column Template for deviceName
+    // Column Helper/Column Template for deviceName
     columnHelper.accessor("deviceName", {
       id: "deviceName",
       header: () => {
-        return (
-          <Text
-            justifyContent="space-between"
-            align="center"
-            fontSize={{ sm: "10px", lg: "12px" }}
-            color="gray.500"
-          >
-            Nama Perangkat
-          </Text>
-        );
+        return <TableHeader tableHeaderName="Nama Perangkat" />;
       },
       cell: (deviceNameData: any) => {
         return (
-          <Flex align="center">
+          <TableCell>
             <Text color={textColor} fontSize="sm" fontWeight="700">
               {deviceNameData.getValue()}
             </Text>
-          </Flex>
+          </TableCell>
         );
       },
     }),
 
-    //* Column Helper/Column Template for autoWater
+    // Column Helper/Column Template for autoWater
     columnHelper.accessor("autoWater", {
       id: "autoWater",
       header: () => {
-        return (
-          <Text
-            justifyContent="space-between"
-            align="center"
-            fontSize={{ sm: "10px", lg: "12px" }}
-            color="gray.500"
-          >
-            Auto Water
-          </Text>
-        );
+        return <TableHeader tableHeaderName="Auto Water" />;
       },
       cell: (autoWaterData: any) => {
         const rowIndex = autoWaterData.row.id;
 
         return (
-          <Flex align="center">
+          <TableCell>
             <Switch
               id={`autoWater_${rowIndex}`}
               name={`autoWater_${rowIndex}`}
@@ -194,31 +168,22 @@ const DevicesTableComponent = (props: { tableData: any }) => {
                 });
               }}
             />
-          </Flex>
+          </TableCell>
         );
       },
     }),
 
-    //* Column Helper/Column Template for autoFeeder
+    // Column Helper/Column Template for autoFeeder
     columnHelper.accessor("autoFeeder", {
       id: "autoFeeder",
       header: () => {
-        return (
-          <Text
-            justifyContent="space-between"
-            align="center"
-            fontSize={{ sm: "10px", lg: "12px" }}
-            color="gray.500"
-          >
-            Auto Feeder
-          </Text>
-        );
+        return <TableHeader tableHeaderName="Auto Feeder" />;
       },
       cell: (autoFeederData: any) => {
         const rowIndex = autoFeederData.row.id;
 
         return (
-          <Flex align="center">
+          <TableCell>
             <Switch
               id={`autoFeeder_${rowIndex}`}
               name={`autoFeeder_${rowIndex}`}
@@ -231,31 +196,22 @@ const DevicesTableComponent = (props: { tableData: any }) => {
                 });
               }}
             />
-          </Flex>
+          </TableCell>
         );
       },
     }),
 
-    //* Column Helper/Column Template for savedData
+    // Column Helper/Column Template for savedData
     columnHelper.accessor("isSaved", {
       id: "isSaved",
       header: () => {
-        return (
-          <Text
-            justifyContent="space-between"
-            align="center"
-            fontSize={{ sm: "10px", lg: "12px" }}
-            color="gray.500"
-          >
-            Simpan Data
-          </Text>
-        );
+        return <TableHeader tableHeaderName="Simpan Data" />;
       },
       cell: (isSavedData: any) => {
         const rowIndex = isSavedData.row.id;
 
         return (
-          <Flex align="center">
+          <TableCell>
             <Switch
               id={`isSaved_${rowIndex}`}
               name={`isSaved_${rowIndex}`}
@@ -268,29 +224,20 @@ const DevicesTableComponent = (props: { tableData: any }) => {
                 });
               }}
             />
-          </Flex>
+          </TableCell>
         );
       },
     }),
 
-    //* Column Helper/Column Template for Edit
+    // Column Helper/Column Template for Edit
     columnHelper.accessor("deviceId", {
       id: "edit",
       header: () => {
-        return (
-          <Text
-            justifyContent="space-between"
-            align="center"
-            fontSize={{ sm: "10px", lg: "12px" }}
-            color="gray.500"
-          >
-            Edit
-          </Text>
-        );
+        return <TableHeader tableHeaderName="Edit" />;
       },
       cell: (editData: any) => {
         return (
-          <Flex align="center">
+          <TableCell>
             <Text
               color={textColor}
               fontSize="sm"
@@ -299,7 +246,7 @@ const DevicesTableComponent = (props: { tableData: any }) => {
             >
               Edit
             </Text>
-          </Flex>
+          </TableCell>
         );
       },
     }),
