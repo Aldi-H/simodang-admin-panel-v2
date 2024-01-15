@@ -23,7 +23,19 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Switch, Table, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Icon,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Switch,
+  Table,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import {
   SortingState,
   createColumnHelper,
@@ -33,6 +45,10 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+
+import { FaEllipsisVertical } from "react-icons/fa6";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 import Card from "@/components/cards/Card";
 import TableHeader from "./components/TableHeader";
@@ -70,6 +86,12 @@ const DevicesTableComponent = (props: { tableData: any }) => {
   );
 
   const textColor = useColorModeValue("secondaryGray.900", "white");
+  const iconColor = useColorModeValue("gray.500", "gray.200");
+  const menuBg = useColorModeValue("white", "navy.700");
+  const shadow = useColorModeValue(
+    "14px 17px 40px 4px rgba(112, 144, 176, 0.18)",
+    "14px 17px 40px 4px rgba(112, 144, 176, 0.06)",
+  );
 
   /**
    * Defines the columns configuration for the DevicesTableComponent.
@@ -141,7 +163,7 @@ const DevicesTableComponent = (props: { tableData: any }) => {
         const rowIndex = autoWaterData.row.id;
 
         return (
-          <TableCell>
+          <TableCell justify="center">
             <Switch
               id={`autoWater_${rowIndex}`}
               name={`autoWater_${rowIndex}`}
@@ -169,7 +191,7 @@ const DevicesTableComponent = (props: { tableData: any }) => {
         const rowIndex = autoFeederData.row.id;
 
         return (
-          <TableCell>
+          <TableCell justify="center">
             <Switch
               id={`autoFeeder_${rowIndex}`}
               name={`autoFeeder_${rowIndex}`}
@@ -197,7 +219,7 @@ const DevicesTableComponent = (props: { tableData: any }) => {
         const rowIndex = isSavedData.row.id;
 
         return (
-          <TableCell>
+          <TableCell justify="center">
             <Switch
               id={`isSaved_${rowIndex}`}
               name={`isSaved_${rowIndex}`}
@@ -219,19 +241,60 @@ const DevicesTableComponent = (props: { tableData: any }) => {
     columnHelper.accessor("deviceId", {
       id: "edit",
       header: () => {
-        return <TableHeader tableHeaderName="Edit" />;
+        return <TableHeader tableHeaderName="Action" />;
       },
       cell: (editData: any) => {
         return (
-          <TableCell>
-            <Text
-              color={textColor}
-              fontSize="sm"
-              fontWeight="700"
-              onClick={() => console.log("clicked", editData.getValue())}
-            >
-              Edit
-            </Text>
+          <TableCell justify="center">
+            <Menu isLazy>
+              <MenuButton p="0px" style={{ position: "relative" }}>
+                <Icon as={FaEllipsisVertical} height="18px" width="18px" />
+              </MenuButton>
+
+              <MenuList
+                p="0px"
+                mt="10px"
+                minW="0"
+                maxWidth="fit-content"
+                borderRadius="10px"
+                bg={menuBg}
+                border="none"
+                boxShadow={shadow}
+              >
+                <Flex flexDirection="column" p="10px">
+                  <MenuItem
+                    _hover={{ bg: "rgba(112, 144, 176, 0.18)" }}
+                    _focus={{ bg: "rgba(112, 144, 176, 0.18)" }}
+                    bg={menuBg}
+                    borderRadius="8px"
+                    px="14px"
+                    onClick={() => console.log("clicked", editData.getValue())}
+                  >
+                    <Icon
+                      me="12px"
+                      alignItems="center"
+                      color={iconColor}
+                      as={FaEdit}
+                    />
+                    <Text fontSize="sm" color={iconColor}>
+                      Edit
+                    </Text>
+                  </MenuItem>
+                  <MenuItem
+                    _hover={{ bg: "rgba(112, 144, 176, 0.18)" }}
+                    _focus={{ bg: "rgba(112, 144, 176, 0.18)" }}
+                    bg={menuBg}
+                    color="red.400"
+                    borderRadius="8px"
+                    px="14px"
+                    onClick={() => console.log("clicked", editData.getValue())}
+                  >
+                    <Icon me="12px" alignItems="center" as={MdDelete} />
+                    <Text fontSize="sm">Delete</Text>
+                  </MenuItem>
+                </Flex>
+              </MenuList>
+            </Menu>
           </TableCell>
         );
       },
