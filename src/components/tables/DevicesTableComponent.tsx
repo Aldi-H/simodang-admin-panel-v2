@@ -53,6 +53,8 @@ import Card from "@/components/cards/Card";
 import Searchbar from "../searchBar/SearchBar";
 import TableHeader from "./components/TableHeader";
 import TableCell from "./components/TableCell";
+import THeadComponent from "./components/THeadComponent";
+import TBodyComponent from "./components/TBodyComponent";
 
 type DevicesTableColumnHelper = {
   deviceId: string;
@@ -252,6 +254,15 @@ const DevicesTableComponent = (props: { tableData: any }) => {
     }),
   ];
 
+  /**
+   * Represents the DevicesTableComponent.
+   * @remarks
+   * This component displays a table of devices.
+   *
+   * @param {Object[]} tableData - The data to be displayed in the table.
+   * @returns {Object} The table object.
+   */
+
   const [data] = useState(() => [...tableData]);
   const table = useReactTable({
     data,
@@ -288,67 +299,8 @@ const DevicesTableComponent = (props: { tableData: any }) => {
       </Box>
       <Box>
         <Table variant="simple" color="gray.500" mt="12px">
-          <Thead>
-            {table.getHeaderGroups().map((headersGroup) => {
-              return (
-                <Tr key={headersGroup.id}>
-                  {headersGroup.headers.map((header) => {
-                    return (
-                      <Th
-                        key={header.id}
-                        colSpan={header.colSpan}
-                        pe="10px"
-                        // borderColor={borderColor}
-                        cursor="pointer"
-                        onClick={header.column.getToggleSortingHandler()}
-                      >
-                        <Flex
-                          justifyContent="space-between"
-                          align="center"
-                          fontSize={{ sm: "10px", lg: "12px" }}
-                          color="gray.400"
-                          pb="12px"
-                        >
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
-                          {{
-                            asc: "",
-                            desc: "",
-                          }[header.column.getIsSorted() as string] ?? null}
-                        </Flex>
-                      </Th>
-                    );
-                  })}
-                </Tr>
-              );
-            })}
-          </Thead>
-
-          <Tbody>
-            {table.getRowModel().rows.map((row) => {
-              return (
-                <Tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
-                    return (
-                      <Td
-                        key={cell.id}
-                        fontSize={{ sm: "14px" }}
-                        minW={{ sm: "150px", md: "200px", lg: "auto" }}
-                        borderColor="transparent"
-                      >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </Td>
-                    );
-                  })}
-                </Tr>
-              );
-            })}
-          </Tbody>
+          <THeadComponent table={table} flexRender={flexRender} />
+          <TBodyComponent table={table} flexRender={flexRender} />
         </Table>
       </Box>
     </Card>
