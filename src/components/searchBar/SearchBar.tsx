@@ -30,7 +30,7 @@ const Searchbar = (props: SearchBarProps) => {
   const inputBg = useColorModeValue("secondaryGray.300", "secondaryGray.900");
 
   return (
-    <InputGroup w={{ base: "100%", md: "200px" }} {...rest}>
+    <InputGroup w={{ base: "100%", md: "250px" }} {...rest}>
       <InputLeftElement>
         <IconButton
           aria-label="search"
@@ -56,7 +56,7 @@ const Searchbar = (props: SearchBarProps) => {
         fontSize="sm"
         bg={background ? background : inputBg}
         color={inputText}
-        fontWeight="500"
+        fontWeight="400"
         _placeholder={{ color: "gray.400", fontSize: "14px" }}
         borderRadius={borderRadius ? borderRadius : "7px"}
         placeholder={placeholder ? placeholder : "Search..."}

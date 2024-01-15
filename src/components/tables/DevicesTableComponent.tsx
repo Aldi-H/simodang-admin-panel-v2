@@ -23,20 +23,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Flex,
-  Switch,
-  Table,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Switch, Table, Text, useColorModeValue } from "@chakra-ui/react";
 import {
   SortingState,
   createColumnHelper,
@@ -47,14 +34,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { FaPlus } from "react-icons/fa6";
-
 import Card from "@/components/cards/Card";
-import Searchbar from "../searchBar/SearchBar";
 import TableHeader from "./components/TableHeader";
 import TableCell from "./components/TableCell";
 import THeadComponent from "./components/THeadComponent";
 import TBodyComponent from "./components/TBodyComponent";
+import TableControl from "./components/TableControl";
 
 type DevicesTableColumnHelper = {
   deviceId: string;
@@ -85,7 +70,6 @@ const DevicesTableComponent = (props: { tableData: any }) => {
   );
 
   const textColor = useColorModeValue("secondaryGray.900", "white");
-  const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
 
   /**
    * Defines the columns configuration for the DevicesTableComponent.
@@ -278,25 +262,9 @@ const DevicesTableComponent = (props: { tableData: any }) => {
   return (
     <Card w="100%" px="0px">
       <Box>
-        <Table variant="simple" me="0px" mx="0px">
-          <Thead>
-            <Tr>
-              <Th borderColor={borderColor}>
-                <Flex justifyContent="space-between">
-                  <Box>
-                    <Button leftIcon={<FaPlus />} size="md">
-                      Add Device
-                    </Button>
-                  </Box>
-                  <Box>
-                    <Searchbar />
-                  </Box>
-                </Flex>
-              </Th>
-            </Tr>
-          </Thead>
-        </Table>
+        <TableControl />
       </Box>
+
       <Box>
         <Table variant="simple" color="gray.500" mt="12px">
           <THeadComponent table={table} flexRender={flexRender} />
