@@ -22,7 +22,7 @@
 
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Flex,
@@ -262,36 +262,47 @@ const DevicesTableComponent = (props: { tableData: any }) => {
                 boxShadow={shadow}
               >
                 <Flex flexDirection="column" p="10px">
-                  <MenuItem
-                    _hover={{ bg: "rgba(112, 144, 176, 0.18)" }}
-                    _focus={{ bg: "rgba(112, 144, 176, 0.18)" }}
-                    bg={menuBg}
-                    borderRadius="8px"
-                    px="14px"
-                    onClick={() => console.log("clicked", editData.getValue())}
-                  >
-                    <Icon
-                      me="12px"
-                      alignItems="center"
-                      color={iconColor}
-                      as={FaEdit}
-                    />
-                    <Text fontSize="sm" color={iconColor}>
-                      Edit
-                    </Text>
-                  </MenuItem>
-                  <MenuItem
-                    _hover={{ bg: "rgba(112, 144, 176, 0.18)" }}
-                    _focus={{ bg: "rgba(112, 144, 176, 0.18)" }}
-                    bg={menuBg}
-                    color="red.400"
-                    borderRadius="8px"
-                    px="14px"
-                    onClick={() => console.log("clicked", editData.getValue())}
-                  >
-                    <Icon me="12px" alignItems="center" as={MdDelete} />
-                    <Text fontSize="sm">Delete</Text>
-                  </MenuItem>
+                  {[
+                    {
+                      menuItem: "Edit",
+                      menuIcon: (
+                        <Icon
+                          me="12px"
+                          alignItems="center"
+                          color={iconColor}
+                          as={FaEdit}
+                        />
+                      ),
+                      menuColor: iconColor,
+                    },
+                    {
+                      menuItem: "Delete",
+                      menuIcon: (
+                        <Icon me="12px" alignItems="center" as={MdDelete} />
+                      ),
+                      menuColor: "red.400",
+                    },
+                  ].map((menuItem, index: number) => {
+                    return (
+                      <MenuItem
+                        key={index}
+                        _hover={{ bg: "rgba(112, 144, 176, 0.18)" }}
+                        _focus={{ bg: "rgba(112, 144, 176, 0.18)" }}
+                        bg={menuBg}
+                        borderRadius="8px"
+                        px="14px"
+                        onClick={() =>
+                          console.log("clicked", editData.getValue())
+                        }
+                        color={menuItem.menuColor}
+                      >
+                        {menuItem.menuIcon}
+                        <Text fontSize="sm" color={menuItem.menuColor}>
+                          {menuItem.menuItem}
+                        </Text>
+                      </MenuItem>
+                    );
+                  })}
                 </Flex>
               </MenuList>
             </Menu>
