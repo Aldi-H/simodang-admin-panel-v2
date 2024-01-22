@@ -62,31 +62,31 @@ const SidebarRoutes: IRouteSidebarGroup[] = [
       },
     ],
   },
-  {
-    label: "Account",
-    routes: [
-      {
-        name: "Profile",
-        layout: "/admin",
-        path: "#",
-        icon: <Icon as={FaUser} width="16px" height="16px" color="inherit" />,
-      },
-      {
-        name: "Setting",
-        layout: "/admin",
-        path: "#",
-        icon: (
-          <Icon as={IoMdSettings} width="16px" height="16px" color="inherit" />
-        ),
-      },
-      //   {
-      //     name: "Logout",
-      //     layout: "/admin",
-      //     path: "#",
-      //     icon: <Icon as={FiLogOut} width="16px" height="16px" color="inherit" />,
-      //   },
-    ],
-  },
+  // {
+  //   label: "Account",
+  //   routes: [
+  //     {
+  //       name: "Profile",
+  //       layout: "/admin",
+  //       path: "#",
+  //       icon: <Icon as={FaUser} width="16px" height="16px" color="inherit" />,
+  //     },
+  //     {
+  //       name: "Setting",
+  //       layout: "/admin",
+  //       path: "#",
+  //       icon: (
+  //         <Icon as={IoMdSettings} width="16px" height="16px" color="inherit" />
+  //       ),
+  //     },
+  //   {
+  //     name: "Logout",
+  //     layout: "/admin",
+  //     path: "#",
+  //     icon: <Icon as={FiLogOut} width="16px" height="16px" color="inherit" />,
+  //   },
+  // ],
+  // },
 ];
 
 export default SidebarRoutes;
