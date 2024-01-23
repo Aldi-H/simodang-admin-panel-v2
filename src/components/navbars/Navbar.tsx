@@ -34,10 +34,10 @@ const Navbar = (props: NavbarProps) => {
     "none",
     "0px 7px 23px rgba(0, 0, 0, 0.05)",
   );
-  const navbarBg = useColorModeValue(
-    "linear-gradient(112.83deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.8) 110.84%)",
-    "linear-gradient(112.83deg, rgba(36, 56, 138, 0.25) 0%, rgba(54, 82, 186, 0.15) 110.84%)",
-  );
+  // const navbarBg = useColorModeValue(
+  //   "linear-gradient(112.83deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.8) 110.84%)",
+  //   "linear-gradient(112.83deg, rgba(36, 56, 138, 0.25) 0%, rgba(54, 82, 186, 0.15) 110.84%)",
+  // );
   const navbarBorder = useColorModeValue("#FFFFFF", "rgba(11, 20, 55, 0.35)");
   const navbarFilter = useColorModeValue(
     "none",
@@ -51,7 +51,7 @@ const Navbar = (props: NavbarProps) => {
 
   if (scrolled) {
     navbarInitialBoxShadowValue = navbarBoxShadow;
-    navbaInitialBgValue = navbarBg;
+    // navbaInitialBgValue = navbarBg;
     navbarInitialBorderValue = navbarBorder;
     navbarInitialFiltervalue = navbarFilter;
   }

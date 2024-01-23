@@ -35,7 +35,7 @@ const SidebarLinks = (props: SidebarLinkProps) => {
 
   // const variantChange = "0.2s linear";
 
-  const activeBg = useColorModeValue("white", "navy.700");
+  // const activeBg = useColorModeValue("white", "teal.300");
   const inactiveBg = useColorModeValue("white", "navy.700");
   const sidebarActiveShadow = "0px 7px 11px rgba(0, 0, 0, 0.04)";
 
@@ -76,7 +76,7 @@ const SidebarLinks = (props: SidebarLinkProps) => {
                       boxSize="initial"
                       justifyContent="flex-start"
                       alignItems="center"
-                      bg={activeBg}
+                      // bg={activeBg}
                       boxShadow={sidebarActiveShadow}
                       mb={{
                         xl: "2px",
@@ -105,7 +105,7 @@ const SidebarLinks = (props: SidebarLinkProps) => {
                           <Icon>{route.icon}</Icon>
                         ) : (
                           <IconBox
-                            bg="navy.500"
+                            bg="teal.300"
                             color="white"
                             h="28px"
                             w="28px"
